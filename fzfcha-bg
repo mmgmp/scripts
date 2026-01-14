@@ -1,0 +1,23 @@
+#!/bin/bash
+
+##############################################################################
+#
+# Muestra un menú para seleccionar el fondo de pantalla. (Sway)
+#
+# Marcos Mikolta
+#
+##############################################################################
+
+BGFOLDER="$XDG_DATA_HOME"/backgrounds/
+BGFILE="$XDG_CONFIG_HOME"/sway/config.d/background.conf
+
+# Comprobar que existe la carpeta como el archivo.
+[[ -d "$BGFOLDER" && -f "$BGFILE" ]] || exit 1
+
+cd "$BGFOLDER"
+IMG_PATH="$(fzfcha)"
+
+[[ -z "$IMG_PATH" ]] && exit 0
+
+printf 'output * bg "%s" fill\n' "$IMG_PATH" > "$BGFILE"
+sway reload

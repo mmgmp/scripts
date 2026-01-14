@@ -1,0 +1,18 @@
+#!/bin/bash
+
+##############################################################################
+#
+# Muestra un menú con imágenes usando fzf.
+#
+# Marcos Mikolta
+#
+##############################################################################
+
+# Script que muestra las imágenes en el menú de fzf
+# y devuelve la ruta completa del archivo.
+
+IMG=$(fzf --reverse --preview 'chafa --size=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES} {}')
+
+[[ -z "$IMG" ]] && exit 0
+
+echo $(pwd)/"$IMG"
