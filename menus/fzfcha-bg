@@ -11,11 +11,13 @@
 BGFOLDER="$XDG_DATA_HOME"/backgrounds/
 BGFILE="$XDG_CONFIG_HOME"/sway/config.d/background.conf
 
+ILABEL="Selector de fondo de pantalla"
+
 # Comprobar que existe la carpeta como el archivo.
 [[ -d "$BGFOLDER" && -f "$BGFILE" ]] || exit 1
 
 cd "$BGFOLDER"
-IMG_PATH="$(fzfcha)"
+IMG_PATH="$(fzfcha "$ILABEL")"
 
 [[ -z "$IMG_PATH" ]] && exit 0
 

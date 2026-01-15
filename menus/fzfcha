@@ -11,7 +11,7 @@
 # Script que muestra las imágenes en el menú de fzf
 # y devuelve la ruta completa del archivo.
 
-IMG=$(fzf --reverse --preview 'chafa --size=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES} {}')
+IMG=$(fzf --style=full --reverse --input-label "$1" --preview-label "$2" --preview 'chafa --size=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES} {}')
 
 [[ -z "$IMG" ]] && exit 0
 
