@@ -15,7 +15,7 @@ ILABEL="Selector de fondo de pantalla"
 
 # Comprobar que existe la carpeta como el archivo.
 [[ -d "$BGFOLDER" ]] || mkdir "$BGFOLDER"
-[[ -f "$BGFILE" ]] || touch "$BGFILE"
+[[ -f "$BGFILE" ]] || touch "$BGFILE" && chmod +x "$BGFILE"
 
 cd "$BGFOLDER"
 IMG_PATH="$(fzfcha "$ILABEL")"
