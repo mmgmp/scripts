@@ -2,11 +2,13 @@
 
 ##############################################################################
 #
-# Fondo de bloqueo de pantalla de bloqueo el mismo que en Sway.
+# Fondo de pantalla de bloqueo el mismo que el escritorio.
 #
 # Marcos Mikolta
 #
 ##############################################################################
 
-wallpaper=$(cat "$XDG_CONFIG_HOME"/sway/config.d/background.conf | sed -n 's/.*bg "\([^"]*\)" fill.*/\1/p')
+FILE="$HOME/.local/scripts/bg-setup"
+
+wallpaper=$(sed -n 's/.*"\([^"]*\)".*/\1/p' "$FILE")
 swaylock -i "$wallpaper" -f --indicator-idle-visible --indicator-radius 75 --font FiraSans
