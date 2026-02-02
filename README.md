@@ -15,4 +15,3 @@ Script varios
 * [cpant](https://github.com/mmgmp/scripts/blob/main/user-tools/cpant) --> Varios tipos de capturar la pantalla.
 * [super-swaylock](https://github.com/mmgmp/scripts/blob/main/user-tools/super-swaylock) --> Swaylock con el fondo de pantalla.
 * [tsession](https://github.com/mmgmp/scripts/blob/main/user-tools/tsession) --> Menú con varias opciones para la sesión.
-* [bg-setup](https://github.com/mmgmp/scripts/blob/main/user-tools/bg-setup) --> Archivo que controla el fondo de pantalla.
