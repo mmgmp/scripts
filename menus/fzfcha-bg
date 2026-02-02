@@ -9,12 +9,13 @@
 ##############################################################################
 
 BGFOLDER="$XDG_DATA_HOME"/backgrounds/
-BGFILE="$HOME"/.local/scripts/bg-setup
+BGFILE="$XDG_DATA_HOME"/backgrounds/bg-setup.sh
 
 ILABEL="Selector de fondo de pantalla"
 
 # Comprobar que existe la carpeta como el archivo.
-[[ -d "$BGFOLDER" && -f "$BGFILE" ]] || exit 1
+[[ -d "$BGFOLDER" ]] || mkdir "$BGFOLDER"
+[[ -f "$BGFILE" ]] || touch "$BGFILE"
 
 cd "$BGFOLDER"
 IMG_PATH="$(fzfcha "$ILABEL")"
