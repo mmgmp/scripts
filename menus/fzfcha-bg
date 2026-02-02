@@ -2,14 +2,14 @@
 
 ##############################################################################
 #
-# Muestra un menú para seleccionar el fondo de pantalla. (Sway)
+# Muestra un menú para seleccionar el fondo de pantalla.
 #
 # Marcos Mikolta
 #
 ##############################################################################
 
 BGFOLDER="$XDG_DATA_HOME"/backgrounds/
-BGFILE="$XDG_CONFIG_HOME"/sway/config.d/background.conf
+BGFILE="$HOME"/.local/scripts/bg-setup
 
 ILABEL="Selector de fondo de pantalla"
 
@@ -21,5 +21,4 @@ IMG_PATH="$(fzfcha "$ILABEL")"
 
 [[ -z "$IMG_PATH" ]] && exit 0
 
-printf 'output * bg "%s" fill\n' "$IMG_PATH" > "$BGFILE"
-sway reload
+printf 'swaybg -m fill -i "%s"\n' "$IMG_PATH" > "$BGFILE"
