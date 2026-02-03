@@ -20,6 +20,7 @@ ILABEL="Selector de fondo de pantalla"
 cd "$BGFOLDER"
 IMG_PATH="$(fzfcha "$ILABEL")"
 
-[[ -z "$IMG_PATH" ]] && exit 0
+# Error en caso de no haber selecionado ninguno.
+[[ -z "$IMG_PATH" ]] && exit 1
 
 printf 'swaybg -m fill -i "%s"\n' "$IMG_PATH" > "$BGFILE"
