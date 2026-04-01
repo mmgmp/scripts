@@ -21,7 +21,7 @@ input_volume() { # Configura las variables para el caso del micrófono
 }
 
 notify() { # Notificación en caso de cambiar el volumen 
-	[ "$volume" -eq 0 ] && bar="×" || bar=$(printf '=%.0s' $(seq 1 $((volume / 5))))
+	[ "$volume" -eq 0 ] && bar="·" || bar=$(printf '═%.0s' $(seq 1 $((volume / 4))))
 	args="-u low -h string:x-canonical-private-synchronous:volumecontrol -t 1000 -i $NOTIFY_ICONS/$icon"
     notify-send "Volumen: ${volume}%" "$bar" $args
 }
@@ -33,11 +33,11 @@ notify_mute() { # Notificación en caso de silenciar
 
 case $1 in
 	up)
-		wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+		wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 10%+
 		output_volume ; notify ;;
 
 	down)
-		wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-
+		wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 10%-
 		output_volume ; notify ;;
 
 	mute)
@@ -45,11 +45,11 @@ case $1 in
 		output_volume ; notify_mute ;;
 
 	mic-up)
-		wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%+
+		wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 10%+
 		input_volume ; notify ;;
 
 	mic-down)
-		wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%-
+		wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 10%-
 		input_volume ; notify ;;
 
 	mic-mute)
