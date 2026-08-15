@@ -17,7 +17,7 @@ notify_error() {
 }
 
 # Muestra todas las claves en $PASSWORD_STORE_DIR
-selec=$(find "$PASSWORD_STORE_DIR/" -type f -name '*.gpg' -exec basename {} .gpg \; | tofi --prompt-text="pass: ")
+selec=$(find "$PASSWORD_STORE_DIR/" -type f -name '*.gpg' -exec basename {} .gpg \; | fuzzel --dmenu)
 [ -z $selec ] && exit 0
 
 # Logra el enlace al archivo seleccionado
