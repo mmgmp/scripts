@@ -1,0 +1,23 @@
+#!/bin/bash
+
+##############################################################################
+#
+# Muestra un menú para seleccionar el fondo de pantalla.
+#
+# Marcos Mikolta
+#
+##############################################################################
+
+BGFOLDER="${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds"
+ILABEL="Selector de fondo de pantalla"
+
+# Comprobar que existe la carpeta.
+[[ -d "$BGFOLDER" ]] || mkdir -p "$BGFOLDER"
+
+cd "$BGFOLDER" || exit 1
+
+IMG=$(ls *.png *.jpg *.jpeg *.webp 2>/dev/null | fzf --style=full --reverse --input-label "$ILABEL" --preview 'chafa --size=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES} {}')
+[[ -z "$IMG" ]] && exit 0
+
+ln -sfn "$BGFOLDER/$IMG" "$BGFOLDER/bg"
+systemctl --user restart swaybg.service
